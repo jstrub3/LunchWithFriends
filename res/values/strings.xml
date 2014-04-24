@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LunchWithFriends</string>
+    <string name="diner_activity_name">Diner</string>
+    <string name="meal_activity_name">Meal</string>
+    <string name="balance_activity_name">Balance</string>
+</resources>
