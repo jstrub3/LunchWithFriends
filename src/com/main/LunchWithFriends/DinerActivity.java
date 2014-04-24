@@ -18,7 +18,7 @@ public class DinerActivity extends Activity {
         }
         else
         {
-            return "No Diner Selected";
+            return "No Diner Selected!";
         }
     }
 
