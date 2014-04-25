@@ -5,16 +5,45 @@ import java.util.Date;
 import java.util.Map;
 
 public class Meal {
-    private Date                    MealDate;
     private int                     Id;
     private int                     RestaurantId;
+    private Date                    MealDate;
     private float                   CheckAmount; //less tip
     private ArrayList<Integer>      DinerIds;
     private Map<Integer, Float>     AmountsOwed; //< DinerId, Amount>
 
     //Constructor
+    public Meal() {
+        this(0, 0, null, 0, null, null);
+
+    }
     public Meal(int id) {
+        this(id, 0, null, 0, null, null);
+    }
+
+    public Meal(int id, int restaurantId) {
+        this(id, restaurantId, null, 0, null, null);
+    }
+
+    public Meal(int id, int restaurantId, Date mealDate ) {
+        this(id, restaurantId, mealDate, 0, null, null);
+    }
+
+    public Meal(int id, int restaurantId, Date mealDate, float checkAmount ) {
+        this(id, restaurantId, mealDate, checkAmount, null, null);
+    }
+
+    public Meal(int id, int restaurantId, Date mealDate, float checkAmount, ArrayList<Integer> dinerIds ) {
+        this(id, restaurantId, mealDate, checkAmount, dinerIds, null);
+    }
+
+    public Meal(int id, int restaurantId, Date mealDate, float checkAmount, ArrayList<Integer> dinerIds, Map<Integer, Float> amountsOwed) {
         Id = id;
+        RestaurantId = restaurantId;
+        MealDate = mealDate;
+        CheckAmount = checkAmount;
+        DinerIds = dinerIds;
+        AmountsOwed = amountsOwed;
     }
 
     //Functions
