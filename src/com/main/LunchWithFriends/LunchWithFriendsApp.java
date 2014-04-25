@@ -26,16 +26,16 @@ public class LunchWithFriendsApp extends Application
         //Debug diners
         Date today = new Date();
 
-        Diner Me = new Diner(0);
+        Diner Me = new Diner(1);
         Me.setName("Joe");
         Me.setIsMe(true);
         Me.setDateJoined(today);
 
-        Diner Tom = new Diner(1);
+        Diner Tom = new Diner(2);
         Tom.setName("Tom");
         Tom.setDateJoined(today);
 
-        Diner Jane = new Diner(2);
+        Diner Jane = new Diner(3);
         Jane.setName("Jane");
         Jane.setDateJoined(today);
 
@@ -44,30 +44,30 @@ public class LunchWithFriendsApp extends Application
         Diners.add(Jane);
 
         //Debug restaurants
-        Restaurant Place1 = new Restaurant(0);
-        Restaurant Place2 = new Restaurant(1);
-        Restaurant Place3 = new Restaurant(2);
+        Restaurant Place1 = new Restaurant(1);
+        Restaurant Place2 = new Restaurant(2);
+        Restaurant Place3 = new Restaurant(3);
 
         Restaurants.add(Place1);
         Restaurants.add(Place2);
         Restaurants.add(Place3);
 
         //Debug meals
-        Meal Breakfast = new Meal(0);
-        Breakfast.AddDiner(0);
+        Meal Breakfast = new Meal(1);
         Breakfast.AddDiner(1);
-        Breakfast.setRestaurantId(0);
+        Breakfast.AddDiner(2);
+        Breakfast.setRestaurantId(1);
 
-        Meal Lunch = new Meal(1);
-        Lunch.AddDiner(0);
-        Lunch.AddDiner(2);
-        Lunch.setRestaurantId(1);
+        Meal Lunch = new Meal(2);
+        Lunch.AddDiner(1);
+        Lunch.AddDiner(3);
+        Lunch.setRestaurantId(2);
 
-        Meal Dinner = new Meal(2);
-        Dinner.AddDiner(0);
+        Meal Dinner = new Meal(3);
         Dinner.AddDiner(1);
         Dinner.AddDiner(2);
-        Dinner.setRestaurantId(2);
+        Dinner.AddDiner(3);
+        Dinner.setRestaurantId(3);
 
         Meals.add(Breakfast);
         Meals.add(Lunch);

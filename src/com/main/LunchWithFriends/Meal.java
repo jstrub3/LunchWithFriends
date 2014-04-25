@@ -2,42 +2,42 @@ package com.main.LunchWithFriends;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Map;
+import java.util.HashMap;
 
 public class Meal {
-    private int                     Id;
-    private int                     RestaurantId;
-    private Date                    MealDate;
-    private float                   CheckAmount; //less tip
-    private ArrayList<Integer>      DinerIds;
-    private Map<Integer, Float>     AmountsOwed; //< DinerId, Amount>
+    private int                        Id;
+    private int                        RestaurantId;
+    private Date                       MealDate;
+    private float                      CheckAmount; //less tip
+    private ArrayList<Integer>         DinerIds;
+    private HashMap<Integer, Float>    AmountsOwed; //< DinerId, Amount>
 
     //Constructor
     public Meal() {
-        this(0, 0, null, 0, null, null);
+        this(0, 0, new Date(), 0, new ArrayList<Integer>(), new HashMap<Integer, Float>());
 
     }
     public Meal(int id) {
-        this(id, 0, null, 0, null, null);
+        this(id, 0, new Date(), 0, new ArrayList<Integer>(), new HashMap<Integer, Float>());
     }
 
     public Meal(int id, int restaurantId) {
-        this(id, restaurantId, null, 0, null, null);
+        this(id, restaurantId, new Date(), 0, new ArrayList<Integer>(), new HashMap<Integer, Float>());
     }
 
     public Meal(int id, int restaurantId, Date mealDate ) {
-        this(id, restaurantId, mealDate, 0, null, null);
+        this(id, restaurantId, mealDate, 0, new ArrayList<Integer>(), new HashMap<Integer, Float>());
     }
 
     public Meal(int id, int restaurantId, Date mealDate, float checkAmount ) {
-        this(id, restaurantId, mealDate, checkAmount, null, null);
+        this(id, restaurantId, mealDate, checkAmount, new ArrayList<Integer>(), new HashMap<Integer, Float>());
     }
 
     public Meal(int id, int restaurantId, Date mealDate, float checkAmount, ArrayList<Integer> dinerIds ) {
-        this(id, restaurantId, mealDate, checkAmount, dinerIds, null);
+        this(id, restaurantId, mealDate, checkAmount, dinerIds, new HashMap<Integer, Float>());
     }
 
-    public Meal(int id, int restaurantId, Date mealDate, float checkAmount, ArrayList<Integer> dinerIds, Map<Integer, Float> amountsOwed) {
+    public Meal(int id, int restaurantId, Date mealDate, float checkAmount, ArrayList<Integer> dinerIds, HashMap<Integer, Float> amountsOwed) {
         Id = id;
         RestaurantId = restaurantId;
         MealDate = mealDate;
