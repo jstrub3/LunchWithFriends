@@ -15,8 +15,27 @@ public class Diner {
     private ArrayList<Balance> OpenBalances;
 
     //Constructor
-    public Diner(int id) {
+    public Diner()
+    {
+        Id = 0;
+        Name = new String();
+        CurrentBalance = 0;
+        DateJoined = new Date();
+        DateLastDined = new Date();
+        IsMe = false;
+        MealIds = new ArrayList<Integer>();
+        OpenBalances = new ArrayList<Balance>();
+    }
+    public Diner(int id)
+    {
         Id = id;
+        Name = new String();
+        CurrentBalance = 0;
+        DateJoined = new Date();
+        DateLastDined = new Date();
+        IsMe = false;
+        MealIds = new ArrayList<Integer>();
+        OpenBalances = new ArrayList<Balance>();
     }
 
     //Functions
@@ -57,9 +76,17 @@ public class Diner {
             MealIds.add( inMealId );
         }
 
-        if ( !LunchWithFriendsApp.GetInstance().GetMealById( inMealId ).HasDinerId( getId() ) )
+        Meal meal = LunchWithFriendsApp.GetInstance().GetMealById( inMealId );
+
+        if ( null == meal )
         {
-            LunchWithFriendsApp.GetInstance().GetMealById( inMealId ).AddDiner( this );
+            meal = new Meal(inMealId);
+            LunchWithFriendsApp.GetInstance().getMeals().add(new Meal(inMealId));
+            meal.AddDiner(this);
+        }
+        else if ( !meal.HasDinerId( getId() ) )
+        {
+            meal.AddDiner( this );
         }
     }
 

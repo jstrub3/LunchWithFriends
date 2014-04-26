@@ -12,8 +12,24 @@ public class Restaurant {
     private ArrayList<Integer> DinerIds;
 
     //Construction
-    public Restaurant(int id) {
+    public Restaurant()
+    {
+        Id = 0;
+        DateLastDined = new Date();
+        DateAdded = new Date();
+        MealCount = 0;
+        MealIds = new ArrayList<Integer>();
+        DinerIds = new ArrayList<Integer>();
+    }
+
+    public Restaurant(int id)
+    {
         Id = id;
+        DateLastDined = new Date();
+        DateAdded = new Date();
+        MealCount = 0;
+        MealIds = new ArrayList<Integer>();
+        DinerIds = new ArrayList<Integer>();
     }
 
     //Functions

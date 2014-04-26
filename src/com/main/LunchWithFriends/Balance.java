@@ -9,6 +9,15 @@ public class Balance {
     private float Amount;
     private Date BalanceUpdateDate;
 
+    public Balance()
+    {
+        DinerIdFrom = 0;
+        DinerIdTo = 0;
+        MealId = 0;
+        Amount = 0;
+        BalanceUpdateDate = new Date();
+    }
+
     public int getDinerIdFrom() {
         return DinerIdFrom;
     }

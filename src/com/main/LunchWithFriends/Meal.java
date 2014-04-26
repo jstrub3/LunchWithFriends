@@ -13,38 +13,25 @@ public class Meal {
     private HashMap<Integer, Float>    AmountsOwed; //< DinerId, Amount>
 
     //Constructor
-    public Meal() {
-        this(0, 0, new Date(), 0, new ArrayList<Integer>(), new HashMap<Integer, Float>());
-
+    public Meal()
+    {
+        Id = 0;
+        RestaurantId = 0;
+        MealDate = new Date();
+        CheckAmount = 0;
+        DinerIds = new ArrayList<Integer>();
+        AmountsOwed = new HashMap<Integer, Float>();
     }
-    public Meal(int id) {
-        this(id, 0, new Date(), 0, new ArrayList<Integer>(), new HashMap<Integer, Float>());
-    }
-
-    public Meal(int id, int restaurantId) {
-        this(id, restaurantId, new Date(), 0, new ArrayList<Integer>(), new HashMap<Integer, Float>());
-    }
-
-    public Meal(int id, int restaurantId, Date mealDate ) {
-        this(id, restaurantId, mealDate, 0, new ArrayList<Integer>(), new HashMap<Integer, Float>());
-    }
-
-    public Meal(int id, int restaurantId, Date mealDate, float checkAmount ) {
-        this(id, restaurantId, mealDate, checkAmount, new ArrayList<Integer>(), new HashMap<Integer, Float>());
-    }
-
-    public Meal(int id, int restaurantId, Date mealDate, float checkAmount, ArrayList<Integer> dinerIds ) {
-        this(id, restaurantId, mealDate, checkAmount, dinerIds, new HashMap<Integer, Float>());
-    }
-
-    public Meal(int id, int restaurantId, Date mealDate, float checkAmount, ArrayList<Integer> dinerIds, HashMap<Integer, Float> amountsOwed) {
+    public Meal(int id)
+    {
         Id = id;
-        RestaurantId = restaurantId;
-        MealDate = mealDate;
-        CheckAmount = checkAmount;
-        DinerIds = dinerIds;
-        AmountsOwed = amountsOwed;
+        RestaurantId = 0;
+        MealDate = new Date();
+        CheckAmount = 0;
+        DinerIds = new ArrayList<Integer>();
+        AmountsOwed = new HashMap<Integer, Float>();
     }
+
 
     //Functions
     public void ParseCheck()
@@ -129,9 +116,20 @@ public class Meal {
     public void setRestaurantId(int restaurantId) 
    {
        //remove from current restaurantId's list of meals, add to new restaurantId's list
-       LunchWithFriendsApp.GetInstance().GetRestaurantById( getRestaurantId() ).RemoveMeal(getId());
+       Restaurant restaurant = LunchWithFriendsApp.GetInstance().GetRestaurantById( RestaurantId);
+
+       if ( null != restaurant )
+       {
+           restaurant.RemoveMeal(getId());
+       }
+
+       restaurant = LunchWithFriendsApp.GetInstance().GetRestaurantById(restaurantId);
+
+       if ( null != restaurant )
+       {
+           restaurant.AddMeal( Id );
+       }
 
        RestaurantId = restaurantId;
-       LunchWithFriendsApp.GetInstance().GetRestaurantById( restaurantId ).AddMeal( getId() );
     }
 }
