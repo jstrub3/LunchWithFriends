@@ -72,6 +72,8 @@ public class LunchWithFriendsApp extends Application
         Meals.add(Breakfast);
         Meals.add(Lunch);
         Meals.add(Dinner);
+
+        UpdateCurrentDiner();
     }
 
     public static LunchWithFriendsApp GetInstance()
