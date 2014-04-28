@@ -22,11 +22,24 @@ public class DinerActivity extends Activity {
         }
     }
 
+    public String GetCurrentBalance()
+    {
+        LunchWithFriendsApp app = LunchWithFriendsApp.GetInstance();
+
+        if ( null != app.getCurrentDiner() )
+        {
+            return String.valueOf(app.getCurrentDiner().getCurrentBalance());
+        }
+        else
+        {
+            return "No balance available";
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.diner);
     }
 
@@ -34,9 +47,13 @@ public class DinerActivity extends Activity {
     public void onStart() {
         super.onStart();
 
-        TextView DinerNameView = (TextView)findViewById(R.id.DinerName);
+        TextView DinerNameView = (TextView) findViewById(R.id.DinerName);
+        TextView CurrentBalanceView = (TextView) findViewById(R.id.CurrentBalance);
 
         if ( DinerNameView != null )
+        {
             DinerNameView.setText( GetCurrentDinerName() );
+            CurrentBalanceView.setText( GetCurrentBalance() );
+        }
     }
 }
