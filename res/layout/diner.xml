@@ -11,6 +11,12 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="GetDinerName"
             android:id="@+id/DinerName"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CurrentBalance"
+            android:onClick="PushActivity"
+            android:id="@+id/Activity_CurrentBalance"/>
     <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

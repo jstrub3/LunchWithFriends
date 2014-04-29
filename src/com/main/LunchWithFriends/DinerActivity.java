@@ -1,7 +1,10 @@
 package com.main.LunchWithFriends;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -48,12 +51,28 @@ public class DinerActivity extends Activity {
         super.onStart();
 
         TextView DinerNameView = (TextView) findViewById(R.id.DinerName);
-        TextView CurrentBalanceView = (TextView) findViewById(R.id.CurrentBalance);
+        Button CurrentBalanceButton = (Button) findViewById(R.id.Activity_CurrentBalance);
 
         if ( DinerNameView != null )
         {
             DinerNameView.setText( GetCurrentDinerName() );
-            CurrentBalanceView.setText( GetCurrentBalance() );
+            CurrentBalanceButton.setText( GetCurrentBalance() );
+        }
+    }
+
+    public void PushActivity(View view )
+    {
+        Intent intent = null;
+        switch ( view.getId() )
+        {
+            case R.id.Activity_CurrentBalance:
+                intent = new Intent(this, BalanceActivity.class);
+                break;
+        }
+
+        if ( null != intent)
+        {
+            startActivity(intent);
         }
     }
 }
