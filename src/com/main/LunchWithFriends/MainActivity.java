@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends Activity {
+public class MainActivity extends LWFActivity {
     /**
      * Called when the activity is first created.
      */

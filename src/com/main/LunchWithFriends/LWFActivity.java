@@ -12,4 +12,29 @@ import android.widget.TextView;
  */
 public class LWFActivity extends Activity
 {
+    public float GetCurrentBalance()
+    {
+        if ( null != GetCurrentDiner() )
+        {
+            return GetCurrentDiner().getCurrentBalance();
+        }
+        else
+        {
+            return Float.MAX_VALUE; //Erroneous return value
+        }
+    }
+
+    public Diner GetCurrentDiner()
+    {
+        LunchWithFriendsApp app = LunchWithFriendsApp.GetInstance();
+
+        if ( null != app.getCurrentDiner() )
+        {
+            return app.getCurrentDiner();
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

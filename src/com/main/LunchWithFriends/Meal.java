@@ -5,12 +5,13 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Meal {
-    private int                        Id;
-    private int                        RestaurantId;
-    private Date                       MealDate;
-    private float                      CheckAmount; //less tip
-    private ArrayList<Integer>         DinerIds;
-    private HashMap<Integer, Float>    AmountsOwed; //< DinerId, Amount>
+    private int                                     Id;
+    private int                                     RestaurantId;
+    private Date                                    MealDate;
+    private float                                   CheckAmount; //less tip defaulted to 20%
+    private ArrayList<Integer>                      DinerIds;
+    private HashMap<Integer, Float>                 OwedMap; //< DinerId, Amount>
+    private HashMap<Integer, ArrayList<Integer>>    CoverMap; //< DinerId(paid), ArrayList<DinerId>(paid for)>
 
     //Constructor
     public Meal()
@@ -20,7 +21,7 @@ public class Meal {
         MealDate = new Date();
         CheckAmount = 0;
         DinerIds = new ArrayList<Integer>();
-        AmountsOwed = new HashMap<Integer, Float>();
+        OwedMap = new HashMap<Integer, Float>();
     }
     public Meal(int id)
     {
@@ -29,7 +30,7 @@ public class Meal {
         MealDate = new Date();
         CheckAmount = 0;
         DinerIds = new ArrayList<Integer>();
-        AmountsOwed = new HashMap<Integer, Float>();
+        OwedMap = new HashMap<Integer, Float>();
     }
 
 
@@ -41,12 +42,35 @@ public class Meal {
 
     public float GetAmountOwed( Diner d )
     {
-        return AmountsOwed.get( d.getId() );
+        return OwedMap.get( d.getId() );
     }
 
     public float GetAmountOwed( int i )
     {
-        return AmountsOwed.get( i );
+        return OwedMap.get( i );
+    }
+
+    public ArrayList<Integer> GetDinersCoveredBy( int i )
+    {
+        return CoverMap.get( i );
+    }
+
+    public Integer GetDinerCovering( int i )
+    {
+        for ( int idx = 0; i < CoverMap.size(); ++idx )
+        {
+            if ( CoverMap.get( idx ).contains(i) )
+            {
+                return idx;
+            }
+        }
+
+        return null;
+    }
+
+    public boolean IsCovered( int i )
+    {
+        return GetDinerCovering( i ) != null;
     }
 
     public boolean HasDinerId( int i )

@@ -7,37 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
-public class DinerActivity extends Activity {
-
-    public String GetCurrentDinerName()
-    {
-        LunchWithFriendsApp app = LunchWithFriendsApp.GetInstance();
-
-        if ( null != app.getCurrentDiner() )
-        {
-            return app.getCurrentDiner().getName();
-        }
-        else
-        {
-            return "No Diner Selected!";
-        }
-    }
-
-    public String GetCurrentBalance()
-    {
-        LunchWithFriendsApp app = LunchWithFriendsApp.GetInstance();
-
-        if ( null != app.getCurrentDiner() )
-        {
-            return String.valueOf(app.getCurrentDiner().getCurrentBalance());
-        }
-        else
-        {
-            return "No balance available";
-        }
-    }
+public class DinerActivity extends LWFActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -55,8 +28,11 @@ public class DinerActivity extends Activity {
 
         if ( DinerNameView != null )
         {
-            DinerNameView.setText( GetCurrentDinerName() );
-            CurrentBalanceButton.setText( GetCurrentBalance() );
+            DinerNameView.setText( GetCurrentDiner().getName() );
+
+            NumberFormat formatter = NumberFormat.getCurrencyInstance();
+            String MoneyString = formatter.format(GetCurrentBalance());
+            CurrentBalanceButton.setText( MoneyString );
         }
     }
 
