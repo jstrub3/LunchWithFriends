@@ -5,22 +5,34 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent">
 
-    <TextView
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="GetDinerName"
+                android:id="@+id/DinerName" android:layout_weight="2"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Balance"
+                android:id="@+id/CurrBalance" android:linksClickable="false" android:layout_weight="1"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/button_settings" android:text="Settings" android:layout_weight="1"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Refresh"
+                android:id="@+id/button_refresh" android:layout_weight="1"/>
+    </LinearLayout>
+    <ListView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="GetDinerName"
-            android:id="@+id/DinerName"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CurrentBalance"
-            android:onClick="PushActivity"
-            android:id="@+id/Activity_CurrentBalance"/>
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="GetCurrentBalance"
-            android:id="@+id/CurrentBalance"/>
+            android:id="@+id/MealList"/>
 </LinearLayout>

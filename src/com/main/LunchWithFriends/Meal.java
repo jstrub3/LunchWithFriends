@@ -22,6 +22,7 @@ public class Meal {
         CheckAmount = 0;
         DinerIds = new ArrayList<Integer>();
         OwedMap = new HashMap<Integer, Float>();
+        CoverMap = new HashMap<Integer, ArrayList<Integer>>();
     }
     public Meal(int id)
     {
@@ -31,6 +32,7 @@ public class Meal {
         CheckAmount = 0;
         DinerIds = new ArrayList<Integer>();
         OwedMap = new HashMap<Integer, Float>();
+        CoverMap = new HashMap<Integer, ArrayList<Integer>>();
     }
 
 
@@ -55,8 +57,20 @@ public class Meal {
         return CoverMap.get( i );
     }
 
+    public boolean IsCovering( int i )
+    {
+        return CoverMap.containsKey( i );
+    }
+
     public Integer GetDinerCovering( int i )
     {
+        if ( CoverMap == null )
+        {
+            System.out.println("ERROR: CoverMap not initialized.");
+            return -1;
+        }
+
+
         for ( int idx = 0; i < CoverMap.size(); ++idx )
         {
             if ( CoverMap.get( idx ).contains(i) )

@@ -131,6 +131,21 @@ public class LunchWithFriendsApp extends Application
         }
     }
 
+    public ArrayList<Meal> getMealsFromDiner( Diner d )
+    {
+        ArrayList<Meal> retMeals = new ArrayList<Meal>();
+
+        for(Meal m: Meals)
+        {
+            if ( m.IsCovered(d.getId()) || m.IsCovering(d.getId()))
+            {
+                retMeals.add(m);
+            }
+        }
+
+        return retMeals;
+    }
+
     //Getters/Setters
     public ArrayList<Meal> getMeals() {
         return Meals;
